@@ -38,11 +38,10 @@ def transform_data(df):
     # Sample Transformation 2: Extract joining day of the week from joining_date column
     df['day_of_week'] = df['date_column'].dt.day_name()
   
-    # Sample Transformation 3: Convert 'date_of_birth' and 'joining_date' columns to datetime
-    df['date_of_birth'] = pd.to_datetime(df['date_of_birth'])
-    df['joining_date'] = pd.to_datetime(df['joining_date'])
+    # Sample Transformation 3: Years of experience
+    df['years_since_joining'] = (pd.Timestamp.now() - df['joining_date']).dt.days // 365
   
-    # Sample Transformation 4: filtering out rows with invalid values
+    # Sample Transformation 4: Filtering out rows with invalid values
     df = df[df['salary'] > 0]
     return df
 
