@@ -35,8 +35,8 @@ def transform_data(df):
     # Sample Transformation 1: Name concatenation
     df['full_name'] = df['first_name'] + ' ' + df['last_name']
   
-    # Sample Transformation 2: Extract joining day of the week from joining_date column
-    df['day_of_week'] = df['date_column'].dt.day_name()
+    # Sample Transformation 2: Standardize job titles (convert to lowercase)
+    df['job_title'] = df['job_title'].str.lower()
   
     # Sample Transformation 3: Years of experience
     df['years_since_joining'] = (pd.Timestamp.now() - df['joining_date']).dt.days // 365
